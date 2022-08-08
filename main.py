@@ -1,20 +1,4 @@
-import itertools
-
-def brute_force(cnf):
-    literals = set()
-    for conj in cnf:
-        for disj in conj:
-            literals.add(disj[0])
- 
-    literals = list(literals)
-    print(literals)
-    n = len(literals)
-    for seq in itertools.product([True,False], repeat=n):
-        a = set(zip(literals, seq))
-        if all([bool(disj.intersection(a)) for disj in cnf]):
-            return True, a
- 
-    return False, None
+import metodoFuerzaBruta as mfb
 
 def __select_literal(cnf):
     for c in cnf:
@@ -47,5 +31,6 @@ def dpll(cnf, assignments={}):
 
 
 formula = [{("p", True), ("q", False)}, {("p", True), ("r", True)}]
-
-print(dpll(formula))
+formula2 = [{("r", True)}, {("p", False), ("r", False)},{("p", False), ("q", True), ("r", False)},{("q",True)}]
+# mfb.fuerzaBruta(formula2)
+print(mfb.fuerzaBruta(formula2))
