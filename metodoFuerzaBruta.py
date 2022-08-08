@@ -18,7 +18,6 @@ def fuerzaBruta(operacion):
         a = set(zip(variables, seq))   
         for disyuncion in operacion:
             lista.append(bool(disyuncion.intersection(a)))
-        # print(lista)
         if checkIfAllTrue(lista):
             return True, a
         lista = []
