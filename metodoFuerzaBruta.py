@@ -1,5 +1,4 @@
 import itertools as it
-from this import d
 
 def checkIfAllTrue(lista):
     for i in lista:
