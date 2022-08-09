@@ -5,5 +5,5 @@ formula = [{("p", True), ("q", False)}, {("p", True), ("r", True)}]
 formula2 = [{("r", True)}, {("p", False), ("r", False)},{("p", False), ("q", True), ("r", False)},{("q",True)}]
 
 
-print(mfb.fuerzaBruta(formula2))
-print(DPLL.dpll(formula2))
+print(mfb.fuerzaBruta(formula))
+print(DPLL.dpll(formula))

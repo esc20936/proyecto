@@ -1,28 +1,39 @@
-
-def __select_literal(cnf):
-    for c in cnf:
-        for literal in c:
-            return literal[0]
- 
-def dpll(cnf, assignments={}):
- 
-    if len(cnf) == 0:
-        return True, assignments
- 
-    if any([len(c)==0 for c in cnf]):
+def dpll(operacion, params={}):
+    if len(operacion) == 0:
+        return True, params
+    
+    if any([len(c)==0 for c in operacion]):
         return False, None
- 
-    l = __select_literal(cnf)
- 
-    new_cnf = [c for c in cnf if (l, True) not in c]
-    new_cnf = [c.difference({(l, False)}) for c in new_cnf]
-    sat, vals = dpll(new_cnf, {**assignments, **{l: True}})
+    l = ''
+    for c in operacion:
+        for literal in c:
+            l = literal[0]
+            break
+    
+    operacionb =[]
+    for x in operacion:
+        if (l, True) not in x:
+            operacionb.append(x)
+
+
+    operaciond = []
+    for x in operacionb:
+        operaciond.append(x.difference({(l, False)}))
+
+
+    sat, vals = dpll(operaciond, {**params, **{l: True}})
     if sat:
         return sat, vals
  
-    new_cnf = [c for c in cnf if (l, False) not in c]
-    new_cnf = [c.difference({(l, True)}) for c in new_cnf]
-    sat, vals = dpll(new_cnf, {**assignments, **{l: False}})
+    operacionb =[]
+    for x in operacion:
+        if (l, False) not in x:
+            operacionb.append(x)
+
+    operaciond = []
+    for x in operacionb:
+        operaciond.append(x.difference({(l, True)}))
+    sat, vals = dpll(operaciond, {**params, **{l: False}})
     if sat:
         return sat, vals
  
