@@ -2,8 +2,11 @@ def dpll(operacion, params={}):
     if len(operacion) == 0:
         return True, params
     
-    if any([len(c)==0 for c in operacion]):
-        return False, None
+    for c in operacion:
+        if len(c)==0:
+            bandera = True
+            return False, None
+
     l = ''
     for c in operacion:
         for literal in c:
