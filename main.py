@@ -1,9 +1,21 @@
 import metodoFuerzaBruta as mfb
 import DPLL
 
-formula = [{("p", True), ("q", False)}, {("p", True), ("r", True)}]
-formula2 = [{("r", True)}, {("p", False), ("r", False)},{("p", False), ("q", True), ("r", False)},{("q",True)}]
 
 
-print(mfb.fuerzaBruta(formula2))
-print(DPLL.dpll(formula2))
+
+
+inciso1 = [{("r", True)}, {("p", False), ("r", False)},{("p", False), ("q", True), ("r", False)},{("q",True)}]
+inciso2= [{('r',True)},{('q',False),('r',False)},{('p',False),('q',True),('r',False)},{('q',True)}]
+inciso3= [{('p',True)},{('p',False)}]
+
+
+
+print(mfb.fuerzaBruta(inciso1))
+print(mfb.fuerzaBruta(inciso2))
+print(mfb.fuerzaBruta(inciso3))
+
+
+print(DPLL.dpll(inciso1))
+print(DPLL.dpll(inciso2))
+print(DPLL.dpll(inciso3))

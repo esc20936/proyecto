@@ -41,3 +41,5 @@ def dpll(operacion, params={}):
         return sat, vals
  
     return False, None
+
+
